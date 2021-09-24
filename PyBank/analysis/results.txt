@@ -1,0 +1,5 @@
+Financial Analysis 
+---------------------------- 
+Total Months: 85
+Total: $37514694
+Average Change: $441349.34117647057
