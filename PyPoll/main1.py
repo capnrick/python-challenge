@@ -7,22 +7,26 @@ csvpath= os.path.join(a_file)
 
 candidate_dict = {}
 vote_count=[]
+
+#opening csv and using csv.reader to read in data row by row
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
+    #skip header row for read in of data
     header_row = next(csvreader)
 
-    #iterate through csv and create dictionary with candidate and increment value, total for each
+    #iterate through csv and create dictionary with candidate and increment value, total for each. Also add list containing all votes for later count
     for ID, county, candidate in csvreader:
         if candidate not in candidate_dict:
             candidate_dict[candidate] = 0
         candidate_dict[candidate] += 1    
         vote_count.append(candidate)
         
-        
 
+
+#print to terminal results 
 print(f'\nElection Results\n-------------------------\nTotal Votes: {len(vote_count)}\n-------------------------')
    
-# sorting by total votes and printing results
+# sorting by total votes and printing results. iterate through sorted dictionary items in descending order(reverse=True) by number of votes (list[1])
 for candidate, votes in sorted(candidate_dict.items(), key=lambda list: list[1], reverse=True):
     
     #calculate percent of vote for each candidate
